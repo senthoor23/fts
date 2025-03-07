@@ -17,7 +17,7 @@ def scrape_data(excel_file, output_file, username, password):
 
     edge_options = Options()
     edge_options.use_chromium = True
-    service = Service(r"C:\Users\esen\Downloads\edgedriver_win64 (2)\msedgedriver.exe")
+    service = Service(r"C:\path\to\msedgedriver.exe")
     driver = webdriver.Edge(service=service, options=edge_options)
 
     wb = load_workbook(output_file)
@@ -96,11 +96,19 @@ def scrape_data(excel_file, output_file, username, password):
     print("Screenshots saved and pasted into output Excel file.")
 
 st.title('Web Scraping with Selenium and Streamlit')
-excel_file = st.text_input('Excel File Path', )
-output_file = st.text_input('Output File Path', )
+uploaded_file = st.file_uploader('Upload Excel File', type=['xlsx'])
+output_file = st.file_uploader('Upload Excel File', type=['xlsx'])
 username = st.text_input('Username')
 password = st.text_input('Password', type='password')
 
+if uploaded_file is not None:
+    with open('uploaded_file.xlsx', 'wb') as f:
+        f.write(uploaded_file.getbuffer())
+    st.success('File uploaded successfully!')
+
 if st.button('Scrape Data'):
-    scrape_data(excel_file, output_file, username, password)
-    st.success('Data scraped and saved successfully!')
+    if uploaded_file is not None:
+        scrape_data('uploaded_file.xlsx', output_file, username, password)
+        st.success('Data scraped and saved successfully!')
+    else:
+        st.error('Please upload an Excel file first.')
