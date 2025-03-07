@@ -17,7 +17,7 @@ def scrape_data(excel_file, output_file, username, password):
 
     edge_options = Options()
     edge_options.use_chromium = True
-    service = Service(r"C:\path\to\msedgedriver.exe")
+    service = Service(r"C:\Users\esen\Downloads\edgedriver_win64 (2)\msedgedriver.exe")
     driver = webdriver.Edge(service=service, options=edge_options)
 
     wb = load_workbook(output_file)
