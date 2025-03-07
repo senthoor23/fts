@@ -4,4 +4,3 @@ openpyxl
 os
 datetime
 selenium
-webdriver
