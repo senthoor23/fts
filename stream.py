@@ -108,7 +108,7 @@ if uploaded_file is not None:
 
 if st.button('Scrape Data'):
     if uploaded_file is not None:
-        scrape_data('uploaded_file.xlsx', 'output Excel File', username, password)
+        scrape_data('uploaded_file.xlsx', 'output_file.xlsx', username, password)
         st.success('Data scraped and saved successfully!')
     else:
         st.error('Please upload an Excel file first.')
