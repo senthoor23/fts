@@ -97,7 +97,7 @@ def scrape_data(excel_file, output_file, username, password):
 
 st.title('Web Scraping with Selenium and Streamlit')
 uploaded_file = st.file_uploader('Upload Excel File', type=['xlsx'])
-output_file = st.file_uploader('Upload Excel File', type=['xlsx'])
+output_file = st.file_uploader('output Excel File', type=['xlsx'])
 username = st.text_input('Username')
 password = st.text_input('Password', type='password')
 
@@ -108,7 +108,7 @@ if uploaded_file is not None:
 
 if st.button('Scrape Data'):
     if uploaded_file is not None:
-        scrape_data('uploaded_file.xlsx', output_file, username, password)
+        scrape_data('uploaded_file.xlsx', 'output Excel File', username, password)
         st.success('Data scraped and saved successfully!')
     else:
         st.error('Please upload an Excel file first.')
