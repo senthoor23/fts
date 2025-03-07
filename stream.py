@@ -1,11 +1,10 @@
 import streamlit as st
 import pandas as pd
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 from openpyxl import load_workbook
 from openpyxl.drawing.image import Image
 from datetime import datetime
@@ -17,8 +16,10 @@ def scrape_data(excel_file, output_file, username, password):
 
     edge_options = Options()
     edge_options.use_chromium = True
-    service = Service(r"C:\Users\esen\Downloads\edgedriver_win64 (2)\msedgedriver.exe")
-    driver = webdriver.Edge(service=service, options=edge_options)
+    edge_options.add_argument('--headless')
+    edge_options.add_argument('--disable-gpu')
+
+    driver = webdriver.Edge(options=edge_options)
 
     wb = load_workbook(output_file)
     ws_screenshots = wb["WebScrape Screenshots"]
