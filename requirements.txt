@@ -1,0 +1,7 @@
+pandas
+streamlit
+openpyxl
+os
+datetime
+selenium
+webdriver
