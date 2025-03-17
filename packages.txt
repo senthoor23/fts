@@ -1,2 +1,0 @@
-microsoft-edge-stable
-microsoft-edge-dev
